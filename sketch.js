@@ -23,13 +23,13 @@ function draw() {
 
 function startScreen() {
   if (state === "start") {
-    background(0);
-    fill("blue");
+    background(0, 0, 128);
+    fill("white");
     textSize(35);
     textAlign(CENTER, CENTER);
     text("Welcome to MaxyType!", width / 2, height / 2);
     text("Similar to Monkeytype, type as fast as you can and follow the displayed prompt.", width/2, height/3);
-    text("Clickt the mouse to start!", width/2, height/1.5);
+    text("Click the mouse to start!", width/2, height/1.5);
   }
 }
 
