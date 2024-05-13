@@ -14,11 +14,13 @@ let wordArray = word.split("");
 function setup() {
   createCanvas(windowWidth, windowHeight);
   console.log(wordArray);
+  startScreen();
 }
 
 function draw() {
-  background(220);
-  startScreen();
+
+
+ 
 }
 
 function startScreen() {
@@ -35,12 +37,19 @@ function startScreen() {
 
 function keyPressed() {
   if (key === wordArray[0].toLocaleLowerCase()) {
-    console.log("hello");
+    console.log("Right Key Pressed");
     wordArray.splice(0, 1);
   }
   else {
-    console.log("bennet is cool");
+    console.log("Wrong Key Pressed");
   }
 }
 
-    
+
+function mousePressed() {
+  background("black");
+  text("Bennet", width / 2, height / 2);
+  console.log("andrew");
+}
+
+
