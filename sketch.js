@@ -9,7 +9,8 @@
 let state = "start";
 let word = "Bennet";
 let wordArray = word.split("");
-
+let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
+let theParagraph = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,7 +24,7 @@ function draw() {
  
 }
 
-function startScreen() {
+function startScreen() {  
   if (state === "start") {
     background(0, 0, 128);
     fill("white");
@@ -49,7 +50,32 @@ function keyPressed() {
 function mousePressed() {
   background("black");
   text("Bennet", width / 2, height / 2);
-  console.log("andrew");
 }
 
 
+function randomText(paragraphs, sentencesPerParagraph) {
+  for (let i = 0; i < paragraphs; i++) {
+    let sentences = [];
+
+    for (let i = 0; i < sentencesPerParagraph; i++) {
+      let numWords = Math.floor(Math.random() * 10) + 5;
+      let sentenceWords = [];
+
+      for (let i = 0; i < numWords; i++) {
+        let ranIndex = Math.floor(Math.random() * theWords.length);
+        sentenceWords.push(theWords[ranIndex]);
+      }
+
+      let sentence = sentenceWords.join(" ") + ".";
+      sentences.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+    }
+
+    theParagraph.push(sentences.join (" "));
+  }
+
+  return theParagraph.join ("\n\n");
+}
+
+let typingTest = randomText(3, 5);
+
+console.log (typingTest);
