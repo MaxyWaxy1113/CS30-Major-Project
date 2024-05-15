@@ -11,6 +11,7 @@ let word = "Bennet";
 let wordArray = word.split("");
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let theParagraph = [];
+let typingTest = randomText(3, 5);
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -19,7 +20,11 @@ function setup() {
 }
 
 function draw() {
+  if (state === "type") {
+    background("black");
 
+    text(typingTest, width/2, height/2);
+  }
 
  
 }
@@ -48,8 +53,8 @@ function keyPressed() {
 
 
 function mousePressed() {
-  background("black");
-  text("Bennet", width / 2, height / 2);
+ 
+  state = "type";
 }
 
 
@@ -76,6 +81,7 @@ function randomText(paragraphs, sentencesPerParagraph) {
   return theParagraph.join ("\n\n");
 }
 
-let typingTest = randomText(3, 5);
 
-console.log (typingTest);
+console.log(typingTest);
+
+
