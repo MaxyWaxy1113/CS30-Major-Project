@@ -11,7 +11,7 @@ let word = "Bennet";
 let wordArray = word.split("");
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let theParagraph = [];
-let typingTest = randomText(3, 5);
+let typingTest = randomText(1, 5);
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,11 +22,9 @@ function setup() {
 function draw() {
   if (state === "type") {
     background("black");
-
-    text(typingTest, width/2, height/2);
+    textFont("lexend deca", 40); // doesn't currently work
+    text(typingTest, width - width, height/2, [width - 10]);
   }
-
- 
 }
 
 function startScreen() {  
@@ -40,6 +38,7 @@ function startScreen() {
     text("Click the mouse to start!", width/2, height/1.5);
   }
 }
+    
 
 function keyPressed() {
   if (key === wordArray[0].toLocaleLowerCase()) {
@@ -53,9 +52,9 @@ function keyPressed() {
 
 
 function mousePressed() {
- 
   state = "type";
 }
+ 
 
 
 function randomText(paragraphs, sentencesPerParagraph) {
@@ -83,5 +82,9 @@ function randomText(paragraphs, sentencesPerParagraph) {
 
 
 console.log(typingTest);
+
+
+
+
 
 
