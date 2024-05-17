@@ -12,6 +12,11 @@ let wordArray = word.split("");
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let theParagraph = [];
 let typingTest = randomText(1, 5);
+let keyboard; 
+
+function preload() {
+  keyboard = loadImage("keyboard.jpg");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -25,19 +30,21 @@ function draw() {
     textFont("lexend deca", 40); // doesn't currently work
     text(typingTest, width - width, height/2, [width - 10]);
   }
+  image(keyboard, width/2 - 500, height/2 - 100, 1000, 400);
 }
 
 function startScreen() {  
   if (state === "start") {
-    background(0, 0, 128);
+    background(55);
     fill("white");
     textSize(35);
-    textAlign(CENTER, CENTER);
-    text("Welcome to MaxyType!", width / 2, height / 2);
-    text("Similar to Monkeytype, type as fast as you can and follow the displayed prompt.", width/2, height/3);
-    text("Click the mouse to start!", width/2, height/1.5);
+    textAlign(CENTER, TOP);
+    textFont ("verdana", 50);
+    text("Welcome to MaxyType!", width / 2, 60);
+    rect(width/4 - 50, 150, 900, 10);
   }
-}
+} 
+ 
     
 
 function keyPressed() {
