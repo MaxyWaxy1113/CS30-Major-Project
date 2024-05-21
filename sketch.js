@@ -7,9 +7,10 @@
 
 
 let state = "start";
+let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let word = "Bennet";
 let wordArray = word.split("");
-let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
+
 let theParagraph = [];
 let typingTest = randomText(1, 5);
 let keyboard; 
@@ -22,6 +23,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   console.log(wordArray);
   startScreen();
+  image(keyboard, width/2 - 500, height/2 - 100, 1000, 400);
 }
 
 function draw() {
@@ -29,8 +31,8 @@ function draw() {
     background("black");
     textFont("lexend deca", 40); // doesn't currently work
     text(typingTest, width - width, height/2, [width - 10]);
+  
   }
-  image(keyboard, width/2 - 500, height/2 - 100, 1000, 400);
 }
 
 function startScreen() {  
@@ -45,6 +47,7 @@ function startScreen() {
   }
 } 
  
+    
     
 
 function keyPressed() {
@@ -88,8 +91,12 @@ function randomText(paragraphs, sentencesPerParagraph) {
 }
 
 
-console.log(typingTest);
-
+function wordSplit() {
+  for (let i = 0; i < theWords.length; i++) {
+    let Bryce = theWords[i].split("");
+    console.log(Bryce);
+  }
+}
 
 
 
