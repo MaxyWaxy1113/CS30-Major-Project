@@ -8,11 +8,11 @@
 
 let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
-let word = "Bennet";
-let wordArray = word.split("");
+
 
 let theParagraph = [];
 let typingTest = randomText(1, 5);
+let typingCharsArr = typingTest.split("");
 let keyboard; 
 
 function preload() {
@@ -21,19 +21,20 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  console.log(wordArray);
+  console.log(typingCharsArr);
   startScreen();
   image(keyboard, width/2 - 500, height/2 - 100, 1000, 400);
 }
 
 function draw() {
   if (state === "type") {
-    background("black");
+    background(55);
     textFont("lexend deca", 40); // doesn't currently work
-    text(typingTest, width - width, height/2, [width - 10]);
-  
-  }
-}
+    text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
+    
+   }
+ }
+    
 
 function startScreen() {  
   if (state === "start") {
@@ -51,9 +52,9 @@ function startScreen() {
     
 
 function keyPressed() {
-  if (key === wordArray[0].toLocaleLowerCase()) {
+  if (key === typingCharsArr[0]) {
     console.log("Right Key Pressed");
-    wordArray.splice(0, 1);
+    typingCharsArr.splice(0, 1);
   }
   else {
     console.log("Wrong Key Pressed");
@@ -90,13 +91,6 @@ function randomText(paragraphs, sentencesPerParagraph) {
   return theParagraph.join ("\n\n");
 }
 
-
-function wordSplit() {
-  for (let i = 0; i < theWords.length; i++) {
-    let Bryce = theWords[i].split("");
-    console.log(Bryce);
-  }
-}
 
 
 
