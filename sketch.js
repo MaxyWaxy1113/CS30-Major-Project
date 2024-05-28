@@ -32,8 +32,8 @@ function draw() {
     textFont("lexend deca", 40); // doesn't currently work
     text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
     
-   }
- }
+  }
+}
     
 
 function startScreen() {  
