@@ -8,7 +8,7 @@
 
 let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
-
+let lastTypedChar = [];
 
 let theParagraph = [];
 let typingTest = randomText(1, 5);
@@ -31,7 +31,8 @@ function draw() {
     background(55);
     textFont("lexend deca", 40); // doesn't currently work
     text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
-    
+    lastTyped();
+    nextKey();
   }
 }
     
@@ -91,8 +92,22 @@ function randomText(paragraphs, sentencesPerParagraph) {
   return theParagraph.join ("\n\n");
 }
 
+function lastTyped() {
+  fill("white");
+  text (key, 310, 10);
+  text ("Last key pressed:", 150, 10);
+}
 
-
-
+function nextKey() {
+  fill("white");
+  if (typingCharsArr[0] === " ") {
+    text ("next key", 80, 60);
+    text ("Spacebar", 200, 10);
+  }
+  fill ("white");
+  text (typingCharsArr[0], 250, 60);
+  text ("next key", 80, 60);
+}
+    
 
 
