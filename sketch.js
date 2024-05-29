@@ -101,12 +101,12 @@ function lastTyped() {
 function nextKey() {
   fill("white");
   if (typingCharsArr[0] === " ") {
-    text ("next key", 80, 60);
-    text ("Spacebar", 200, 10);
+    text ("next key:", 80, 60);
+    text ("Spacebar", 250, 60);
   }
   fill ("white");
-  text (typingCharsArr[0], 250, 60);
-  text ("next key", 80, 60);
+  text (typingCharsArr[0], 200, 60);
+  text ("next key:", 80, 60);
 }
     
 
