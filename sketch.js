@@ -33,6 +33,7 @@ function draw() {
     text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
     lastTyped();
     nextKey();
+    gameText();
   }
 }
     
@@ -93,10 +94,19 @@ function randomText(paragraphs, sentencesPerParagraph) {
 }
 
 function lastTyped() {
-  fill("white");
-  text (key, 310, 10);
-  text ("Last key pressed:", 150, 10);
+  if (keyCode === 20) {
+    fill("red");
+    text ("Caps Lock Is On!", width/2 - 30, 10);
+    fill("white");
+    text ("Last key pressed:", 145, 10);
+  }
+  if (keyCode !== 20) {
+    fill("white");
+    text (key, 310, 10);
+    text ("Last key pressed:", 145, 10);
+  }
 }
+
 
 function nextKey() {
   fill("white");
@@ -105,9 +115,21 @@ function nextKey() {
     text ("Spacebar", 250, 60);
   }
   fill ("white");
-  text (typingCharsArr[0], 200, 60);
+  text (typingCharsArr[0], 180, 60);
   text ("next key:", 80, 60);
 }
+
+function gameText() {
+  fill("yellow");
+  textSize(100);
+  text ("MaxyType", width/2 - 30, 200);
+  fill("white");
+}
+
+
     
+
+
+
 
 
