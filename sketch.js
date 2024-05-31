@@ -34,6 +34,7 @@ function draw() {
     lastTyped();
     nextKey();
     gameText();
+    
   }
 }
     
@@ -58,10 +59,16 @@ function keyPressed() {
     console.log("Right Key Pressed");
     typingCharsArr.splice(0, 1);
   }
+  if (key === "1") {
+    background("red");
+    console.log("1 was pressed");
+  }
   else {
     console.log("Wrong Key Pressed");
   }
 }
+
+
 
 
 function mousePressed() {
@@ -122,12 +129,10 @@ function nextKey() {
 function gameText() {
   fill("yellow");
   textSize(100);
+  textFont("Times New Roman");
   text ("MaxyType", width/2 - 30, 200);
   fill("white");
 }
-
-
-    
 
 
 
