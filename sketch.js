@@ -6,6 +6,8 @@
 // - describe what you did to take this project "above and beyond"
 
 
+// FOR TOMMROW, USE BLINKING ARROW OVER THE CURRENT LETTER
+
 let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let lastTypedChar = [];
@@ -34,10 +36,9 @@ function draw() {
     lastTyped();
     nextKey();
     gameText();
-    
+    blinkYellowLine();
   }
-}
-    
+}  
 
 function startScreen() {  
   if (state === "start") {
@@ -133,6 +134,23 @@ function gameText() {
   text ("MaxyType", width/2 - 30, 200);
   fill("white");
 }
+
+function blinkYellowLine() {
+  if (millis() % 1000 < 500) {
+    push();
+    stroke("yellow");
+       
+    line(width - (width-10), 410 + 10, width - (width-10), 410 - 45);
+    pop();
+  }
+}
+    
+ 
+
+
+
+
+
 
 
 
