@@ -11,11 +11,14 @@
 let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let lastTypedChar = [];
-
 let theParagraph = [];
 let typingTest = randomText(1, 5);
 let typingCharsArr = typingTest.split("");
 let keyboard; 
+
+
+
+
 
 function preload() {
   keyboard = loadImage("keyboard.jpg");
@@ -36,7 +39,8 @@ function draw() {
     lastTyped();
     nextKey();
     gameText();
-    blinkYellowLine();
+   
+   
   }
 }  
 
@@ -58,7 +62,7 @@ function startScreen() {
 function keyPressed() {
   if (key === typingCharsArr[0]) {
     console.log("Right Key Pressed");
-    typingCharsArr.splice(0, 1);
+    typingCharsArr.splice(0, 1);  
   }
   if (key === "1") {
     background("red");
@@ -135,17 +139,7 @@ function gameText() {
   fill("white");
 }
 
-function blinkYellowLine() {
-  if (millis() % 1000 < 500) {
-    push();
-    stroke("yellow");
-       
-    line(width - (width-10), 410 + 10, width - (width-10), 410 - 45);
-    pop();
-  }
-}
-    
- 
+
 
 
 
