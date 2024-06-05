@@ -15,6 +15,8 @@ let theParagraph = [];
 let typingTest = randomText(1, 5);
 let typingCharsArr = typingTest.split("");
 let keyboard; 
+let charCounter = 0;
+let wrongCharCounter = 0;
 
 
 
@@ -61,17 +63,19 @@ function startScreen() {
 
 function keyPressed() {
   if (key === typingCharsArr[0]) {
-    console.log("Right Key Pressed");
     typingCharsArr.splice(0, 1);  
+    charCounter++;
+    console.log(charCounter);
   }
-  if (key === "1") {
-    background("red");
-    console.log("1 was pressed");
-  }
-  else {
-    console.log("Wrong Key Pressed");
+  if (!key === typingCharsArr[0]) {
+    typingCharsArr.splice(0, 1);  
+    wrongCharCounter++;
   }
 }
+
+
+
+  
 
 
 
