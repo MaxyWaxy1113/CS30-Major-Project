@@ -17,7 +17,9 @@ let typingCharsArr = typingTest.split("");
 let keyboard; 
 let charCounter = 0;
 let wrongCharCounter = 0;
-
+let myButton = new Clickable();
+let myButton2 = new Clickable();
+let myButton3 = new Clickable();
 
 
 
@@ -31,8 +33,8 @@ function setup() {
   console.log(typingCharsArr);
   startScreen();
   image(keyboard, width/2 - 500, height/2 - 100, 1000, 400);
+  myButtonDisplay();
 }
-
 function draw() {
   if (state === "type") {
     background(55);
@@ -41,10 +43,12 @@ function draw() {
     lastTyped();
     nextKey();
     gameText();
-   
-   
+    
   }
 }  
+
+
+
 
 function startScreen() {  
   if (state === "start") {
@@ -143,6 +147,30 @@ function gameText() {
   fill("white");
 }
 
+
+function myButtonDisplay() {
+  myButton.locate(100, 200);
+  myButton.text = "15 sec";
+  myButton.draw();
+  myButton.onPress = function() {
+    console.log("bennet");
+  };
+
+  myButton2.locate(200, 200);
+  myButton2.text = "30 sec";
+  myButton2.draw();
+  myButton2.onPress = function() {
+    console.log("bennet2");
+  };
+
+  myButton3.locate(300, 200);
+  myButton3.text = "45 sec";
+  myButton3.draw();
+  myButton3.onPress = function() {
+    console.log("bennet1");
+  };
+ 
+}
 
 
 
