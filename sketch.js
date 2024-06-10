@@ -20,6 +20,11 @@ let wrongCharCounter = 0;
 let myButton = new Clickable();
 let myButton2 = new Clickable();
 let myButton3 = new Clickable();
+let typeState;
+let startTime = 0;
+let endTime1 = 15000;
+let endTime2 = 30000;
+let endTime3 = 45000;
 
 
 
@@ -33,7 +38,7 @@ function setup() {
   console.log(typingCharsArr);
   startScreen();
   image(keyboard, width/2 - 500, height/2 - 100, 1000, 400);
-  myButtonDisplay();
+  
 }
 function draw() {
   if (state === "type") {
@@ -43,9 +48,16 @@ function draw() {
     lastTyped();
     nextKey();
     gameText();
+   
+    myButtonDisplay();
     
-  }
-}  
+  }   
+  stateDetect();
+}
+    
+  
+  
+
 
 
 
@@ -153,23 +165,55 @@ function myButtonDisplay() {
   myButton.text = "15 sec";
   myButton.draw();
   myButton.onPress = function() {
-    console.log("bennet");
+    startTimer();
   };
+    
+
 
   myButton2.locate(200, 200);
   myButton2.text = "30 sec";
   myButton2.draw();
   myButton2.onPress = function() {
-    console.log("bennet2");
+    startTimer2();
   };
 
   myButton3.locate(300, 200);
   myButton3.text = "45 sec";
   myButton3.draw();
   myButton3.onPress = function() {
-    console.log("bennet1");
+    startTimer3();
   };
  
+}
+
+function startTimer() {
+  setTimeout(() => {
+    state = "end";
+    console.log(state);
+    background(0);
+  }, 15000);
+}
+
+function stateDetect() {
+  if (state === "end") {
+    console.log("you arent cooked anymore");
+  }
+}
+
+function startTimer2() {
+  setTimeout(() => {
+    state = "end";
+    console.log(state);
+    background(0);
+  }, 30000);
+}
+
+function startTimer3() {
+  setTimeout(() => {
+    state = "end";
+    console.log(state);
+    background(0);
+  }, 45000);
 }
 
 
