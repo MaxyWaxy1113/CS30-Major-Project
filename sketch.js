@@ -48,11 +48,8 @@ function draw() {
     lastTyped();
     nextKey();
     gameText();
-   
     myButtonDisplay();
-    
   }   
-  stateDetect();
 }
     
   
@@ -183,39 +180,45 @@ function myButtonDisplay() {
   myButton3.onPress = function() {
     startTimer3();
   };
+
+
  
 }
 
 function startTimer() {
   setTimeout(() => {
-    state = "end";
+    state = "15";
     console.log(state);
     background(0);
+    fill("white");
+    text("WPM", width/2, height/2);
+    text (charCounter * 4, width/2 + 200, height/2);
   }, 15000);
 }
 
-function stateDetect() {
-  if (state === "end") {
-    console.log("you arent cooked anymore");
-  }
-}
+
 
 function startTimer2() {
   setTimeout(() => {
-    state = "end";
+    state = "30";
     console.log(state);
     background(0);
+    fill("white");
+    text("WPM", width/2, height/2);
+    text (charCounter * 2, width/2 + 200, height/2);
   }, 30000);
 }
 
 function startTimer3() {
   setTimeout(() => {
-    state = "end";
+    state = "45";
     console.log(state);
     background(0);
+    fill("white");
+    text("WPM", width/2, height/2);
+    text (charCounter * (4/3), width/2 + 200, height/2);
   }, 45000);
 }
-
 
 
 
