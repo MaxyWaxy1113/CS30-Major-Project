@@ -131,6 +131,12 @@ function lastTyped() {
     text (key, 310, 10);
     text ("Last key pressed:", 145, 10);
   }
+  if (state === "green") {
+    fill(144, 238, 144);  
+  }
+  if (state === "red") {
+    fill(255, 124, 128);
+  }
 }
 
 
@@ -162,7 +168,7 @@ function nextKey() {
     }
     text (typingCharsArr[0], 180, 60);
     text ("next key:", 80, 60);
-    fill(255, 124, 128)
+    fill(255, 124, 128);
   }
 
 
@@ -188,9 +194,9 @@ function gameTextGreen() {
 function gameTextRed() {
   textSize(100);
   textFont("Times New Roman");
-  fill(255, 124, 128)
+  fill(255, 124, 128);
   text ("MaxyType", width/2 - 30, 200);
-  fill(255, 124, 128)
+  fill(255, 124, 128);
 }
 
   
@@ -231,7 +237,7 @@ function myButtonDisplay() {
     console.log(state);
   };
 
-  myButtonColour2.locate(width/1.5, 200);
+  myButtonColour2.locate(width/1.51, 200);
   myButtonColour2.text = "red";
   myButtonColour2.draw();
   myButtonColour2.onPress = function() {
@@ -288,6 +294,14 @@ function colorChange() {
     myButtonDisplay();
     textSize(40);
     nextKey();
+    lastTyped();
+    myButtonColour1.color = "#90ee90";
+    myButtonColour2.color = "#90ee90";
+    myButton.color = "#90ee90";
+    myButton2.color = "#90ee90";
+    myButton3.color = "#90ee90";
+  
+    
   
   }
 
@@ -298,6 +312,12 @@ function colorChange() {
     myButtonDisplay();
     textSize(40);
     nextKey();  
+    lastTyped();
+    myButtonColour1.color = "#FF7276";
+    myButtonColour2.color = "#FF7276";
+    myButton.color = "#FF7276";
+    myButton2.color = "#FF7276";
+    myButton3.color = "#FF7276";
   }
 }
     
