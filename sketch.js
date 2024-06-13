@@ -96,17 +96,6 @@ function keyPressed() {
   }
 }
 
-
-
-  
-
-
-
-
-
- 
-
-
 function randomText(paragraphs, sentencesPerParagraph) {
   for (let i = 0; i < paragraphs; i++) {
     let sentences = [];
@@ -145,6 +134,7 @@ function lastTyped() {
 }
 
 
+
 function nextKey() {
   fill("white");
   if (typingCharsArr[0] === " ") {
@@ -154,7 +144,30 @@ function nextKey() {
   fill ("white");
   text (typingCharsArr[0], 180, 60);
   text ("next key:", 80, 60);
+
+  if (state === "green") {
+    if (typingCharsArr[0] === " ") {
+      text ("next key:", 80, 60);
+      text ("Spacebar", 250, 60);
+    }
+    text (typingCharsArr[0], 180, 60);
+    text ("next key:", 80, 60);
+    fill(144, 238, 144);
+  }
+
+  if (state === "red") {
+    if (typingCharsArr[0] === " ") {
+      text ("next key:", 80, 60);
+      text ("Spacebar", 250, 60);
+    }
+    text (typingCharsArr[0], 180, 60);
+    text ("next key:", 80, 60);
+    fill(255, 124, 128)
+  }
+
+
 }
+
 
 function gameText() {
   fill("yellow");
@@ -165,12 +178,23 @@ function gameText() {
 }
 
 function gameTextGreen() {
-  fill("white");
   textSize(100);
   textFont("Times New Roman");
+  fill(144, 238, 144);
   text ("MaxyType", width/2 - 30, 200);
   fill(144, 238, 144);
 }
+
+function gameTextRed() {
+  textSize(100);
+  textFont("Times New Roman");
+  fill(255, 124, 128)
+  text ("MaxyType", width/2 - 30, 200);
+  fill(255, 124, 128)
+}
+
+  
+
 
 
 
@@ -198,12 +222,21 @@ function myButtonDisplay() {
     startTimer3();
   };
 
-  myButtonColour1.locate(width/2, 200);
+  myButtonColour1.locate(width/1.377, 200);
   myButtonColour1.text = "green";
   myButtonColour1.draw();
   myButtonColour1.onPress = function() {
     
     state = "green";
+    console.log(state);
+  };
+
+  myButtonColour2.locate(width/1.5, 200);
+  myButtonColour2.text = "red";
+  myButtonColour2.draw();
+  myButtonColour2.onPress = function() {
+    
+    state = "red";
     console.log(state);
   };
 
@@ -249,17 +282,27 @@ function startTimer3() {
 
 function colorChange() {
   if (state === "green") {
-    console.log("hello");
     background("green");
-    textFont("lexend deca", 40); // doesn't currently work
     text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
     gameTextGreen();
     myButtonDisplay();
     textSize(40);
     nextKey();
-    lastTyped();
+  
+  }
+
+  if (state === "red") {
+    background("red");
+    text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
+    gameTextRed();
+    myButtonDisplay();
+    textSize(40);
+    nextKey();  
   }
 }
+    
+    
+
 
 
 
