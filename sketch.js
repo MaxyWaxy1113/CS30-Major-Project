@@ -7,6 +7,7 @@
 
 
 // FOR TOMMROW, USE BLINKING ARROW OVER THE CURRENT LETTER
+// CHANGE FILL STATEMENT ON LAST TYPED AND FIRST TYPED
 
 let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
@@ -20,6 +21,9 @@ let wrongCharCounter = 0;
 let myButton = new Clickable();
 let myButton2 = new Clickable();
 let myButton3 = new Clickable();
+let myButtonColour1 =  new Clickable();
+let myButtonColour2 =  new Clickable();
+let myButtonColour3 =  new Clickable();
 let typeState;
 let startTime = 0;
 let endTime1 = 15000;
@@ -49,7 +53,9 @@ function draw() {
     nextKey();
     gameText();
     myButtonDisplay();
+    
   }   
+  colorChange();
 }
     
   
@@ -75,6 +81,10 @@ function startScreen() {
     
 
 function keyPressed() {
+
+  if (keyCode === 49) {
+    state = "type";
+  }
   if (key === typingCharsArr[0]) {
     typingCharsArr.splice(0, 1);  
     charCounter++;
@@ -93,9 +103,7 @@ function keyPressed() {
 
 
 
-function mousePressed() {
-  state = "type";
-}
+
  
 
 
@@ -156,6 +164,15 @@ function gameText() {
   fill("white");
 }
 
+function gameTextGreen() {
+  fill("white");
+  textSize(100);
+  textFont("Times New Roman");
+  text ("MaxyType", width/2 - 30, 200);
+  fill(144, 238, 144);
+}
+
+
 
 function myButtonDisplay() {
   myButton.locate(100, 200);
@@ -179,6 +196,15 @@ function myButtonDisplay() {
   myButton3.draw();
   myButton3.onPress = function() {
     startTimer3();
+  };
+
+  myButtonColour1.locate(width/2, 200);
+  myButtonColour1.text = "green";
+  myButtonColour1.draw();
+  myButtonColour1.onPress = function() {
+    
+    state = "green";
+    console.log(state);
   };
 
 
@@ -217,7 +243,22 @@ function startTimer3() {
     fill("white");
     text("WPM", width/2, height/2);
     text (charCounter * (4/3), width/2 + 200, height/2);
-  }, 45000);
+  }, 1000);
+}
+
+
+function colorChange() {
+  if (state === "green") {
+    console.log("hello");
+    background("green");
+    textFont("lexend deca", 40); // doesn't currently work
+    text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
+    gameTextGreen();
+    myButtonDisplay();
+    textSize(40);
+    nextKey();
+    lastTyped();
+  }
 }
 
 
