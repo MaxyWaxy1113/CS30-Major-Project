@@ -5,10 +5,6 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-
-// FOR TOMMROW, USE BLINKING ARROW OVER THE CURRENT LETTER
-// CHANGE FILL STATEMENT ON LAST TYPED AND FIRST TYPED
-
 let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let lastTypedChar = [];
@@ -59,12 +55,6 @@ function draw() {
 }
     
   
-  
-
-
-
-
-
 function startScreen() {  
   if (state === "start") {
     background(55);
@@ -141,7 +131,7 @@ function lastTyped() {
 
 
 
-function nextKey() {
+function nextKey() {  
   fill("white");
   if (typingCharsArr[0] === " ") {
     text ("next key:", 80, 60);
@@ -200,8 +190,6 @@ function gameTextRed() {
 }
 
   
-
-
 
 
 function myButtonDisplay() {
@@ -282,7 +270,7 @@ function startTimer3() {
     fill("white");
     text("WPM", width/2, height/2);
     text (charCounter * (4/3), width/2 + 200, height/2);
-  }, 1000);
+  }, 45000);
 }
 
 

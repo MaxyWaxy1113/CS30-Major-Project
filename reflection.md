@@ -1,0 +1,3 @@
+What advice would I give myself if I were to do this project again?
+
+If I were to do this project again, I would try and put more effort into learning some concepts by myself before turning to others or online videos for help. While the internet and peers were a very good way for me to work through my problems, I feel as though I would have achieved a deeper understanding of the concepts I used if I gave myself more time to think of my solutions without the influence of external factors. 
