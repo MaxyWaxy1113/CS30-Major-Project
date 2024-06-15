@@ -333,7 +333,7 @@ function wpmAccuracyText() {
     if (state === "45") {
       text("WPM", width/2 - 80, height/2);
       text (charCounter * (1/4) * 1.25, width/2 + 200, height/2);
-    }
+    } 
   }
 
       
@@ -353,14 +353,3 @@ function wpmAccuracyText() {
     
     
     
-
-
-
-
-
-
-
-
-
-
-
