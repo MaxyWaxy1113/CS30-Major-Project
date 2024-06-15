@@ -4,9 +4,8 @@
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
-
 let state = "start";
-let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
+let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"]; // selection of random words
 let lastTypedChar = [];
 let theParagraph = [];
 let timerArray = [];
@@ -17,7 +16,7 @@ let keyboard;
 let capsLockTimes = 0; 
 let charCounter = 0;
 let wrongCharCounter = 0;
-let myButton = new Clickable();
+let myButton = new Clickable(); // various buttons
 let myButton2 = new Clickable();
 let myButton3 = new Clickable();
 let myButtonColour1 =  new Clickable();
@@ -25,17 +24,12 @@ let myButtonColour2 =  new Clickable();
 let myButtonColour3 =  new Clickable();
 let typeState;
 let startTime = 0;
-let endTime1 = 15000;
+let endTime1 = 15000; // total time for 15 sec, 30 sec, and 45 sec tests
 let endTime2 = 30000;
 let endTime3 = 45000;
-
-
-
-
 function preload() {
-  keyboard = loadImage("keyboard.jpg");
+  keyboard = loadImage("keyboard.jpg"); // loads start screen image
 }
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   console.log(typingCharsArr);
@@ -46,20 +40,21 @@ function setup() {
 function draw() {
   if (state === "type") {
     background(55);
-    textFont("lexend deca", 40); // doesn't currently work
+    textFont("lexend deca", 40); 
     text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
     lastTyped();
     nextKey();
     gameText();
     myButtonDisplay();
+
   }   
   colorChange();
 }
-    
-    
-    
-    
-function startScreen() {  
+
+
+
+
+function startScreen() {  // introductory start screen
   if (state === "start") {
     background(55);
     fill("white");
@@ -76,43 +71,50 @@ function startScreen() {
  
     
     
-
-function keyPressed() {
+function keyPressed() { // checks to see if right key was pressed
 
   if (keyCode === 49) {
-      state = "type";
+    state = "type";
+      
   }
-     
-  if (keyCode === 20) {
+  if (key === typingCharsArr[0]) {
+    typingCharsArr.splice(0, 1);  
+    charCounter++;
+    console.log(charCounter);
+  }
+  if (!key === typingCharsArr[0]) {
+    typingCharsArr.splice(0, 1);  
+    wrongCharCounter++;
+
+  if (keyCode === 20) { // toggles capslock
     capsLockTimes++
   }
+}
 }
 
 function randomText(paragraphs, sentencesPerParagraph) {
   for (let i = 0; i < paragraphs; i++) {
     let sentences = [];
-
     for (let i = 0; i < sentencesPerParagraph; i++) {
       let numWords = Math.floor(Math.random() * 10) + 5;
       let sentenceWords = [];
-
       for (let i = 0; i < numWords; i++) {
         let ranIndex = Math.floor(Math.random() * theWords.length);
         sentenceWords.push(theWords[ranIndex]);
       }
-
       let sentence = sentenceWords.join(" ") + ".";
       sentences.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
     }
-
     theParagraph.push(sentences.join (" "));
   }
-
   return theParagraph.join ("\n\n");
 }
 
 function lastTyped() {
   if (keyCode === 20) {
+    fill("red");
+    text ("Caps Lock Is On!", width/2 - 30, 10);
+    fill("white");
     if (capsLockTimes % 2 !== 0) {
       fill("red");
       text ("Caps Lock Is On!", width/2 - 30, 10);
@@ -133,9 +135,6 @@ function lastTyped() {
     fill(255, 124, 128);
   }
 }
-
-
-
 function nextKey() {  
   fill("white");
   if (typingCharsArr[0] === " ") {
@@ -145,7 +144,6 @@ function nextKey() {
   fill ("white");
   text (typingCharsArr[0], 180, 60);
   text ("next key:", 80, 60);
-
   if (state === "green") {
     if (typingCharsArr[0] === " ") {
       text ("next key:", 80, 60);
@@ -155,7 +153,6 @@ function nextKey() {
     text ("next key:", 80, 60);
     fill(144, 238, 144);
   }
-
   if (state === "red") {
     if (typingCharsArr[0] === " ") {
       text ("next key:", 80, 60);
@@ -165,11 +162,7 @@ function nextKey() {
     text ("next key:", 80, 60);
     fill(255, 124, 128);
   }
-
-
 }
-
-
 function gameText() {
   fill("yellow");
   textSize(100);
@@ -177,7 +170,6 @@ function gameText() {
   text ("MaxyType", width/2 - 30, 200);
   fill("white");
 }
-
 function gameTextGreen() {
   textSize(100);
   textFont("Times New Roman");
@@ -185,7 +177,6 @@ function gameTextGreen() {
   text ("MaxyType", width/2 - 30, 200);
   fill(144, 238, 144);
 }
-
 function gameTextRed() {
   textSize(100);
   textFont("Times New Roman");
@@ -194,6 +185,7 @@ function gameTextRed() {
   fill(255, 124, 128);
 }
 
+  
 
 
 
@@ -204,8 +196,8 @@ function myButtonDisplay() {
   myButton.onPress = function() {
     startTimer();
   };
-  
-    
+
+
 
 
   myButton2.locate(200, 200);
@@ -214,7 +206,7 @@ function myButtonDisplay() {
   myButton2.onPress = function() {
     startTimer2();
   };
- 
+
 
   myButton3.locate(300, 200);
   myButton3.text = "45 sec";
@@ -222,50 +214,50 @@ function myButtonDisplay() {
   myButton3.onPress = function() {
     startTimer3();
   };
-  
+
 
   myButtonColour1.locate(width/1.377, 200);
   myButtonColour1.text = "green";
-  
+
   myButtonColour1.draw();
   myButtonColour1.onPress = function() {
-    
+
     state = "green";
     console.log(state);
   };
 
   myButtonColour2.locate(width/1.51, 200);
   myButtonColour2.text = "red";
- 
+
   myButtonColour2.draw();
   myButtonColour2.onPress = function() {
-    
+
     state = "red";
     console.log(state);
   };
-
-
  
 }
-
 function startTimer() {
   setTimeout(() => {
     state = "15";
     console.log(state);
     background(0);
     fill("white");
+    text("WPM", width/2, height/2);
+    text (charCounter * 4, width/2 + 200, height/2);
     wpmAccuracyText()
   }, 15000);
 }
-
-
 
 function startTimer2() {
   setTimeout(() => {
     state = "30";
     console.log(state);
+    background(0);
     background(0);  
     fill("white");
+    text("WPM", width/2, height/2);
+    text (charCounter * 2, width/2 + 200, height/2);
     wpmAccuracyText();
   }, 30000);
 }
@@ -276,10 +268,11 @@ function startTimer3() {
     console.log(state);
     background(0);
     fill("white");
+    text("WPM", width/2, height/2);
+    text (charCounter * (4/3), width/2 + 200, height/2);
     wpmAccuracyText();
   }, 45000);
 }
-
 
 function colorChange() {
   if (state === "green") {
@@ -299,7 +292,6 @@ function colorChange() {
     
   
   }
-
   if (state === "red") {
     background("red");
     text(typingCharsArr.join(""), width - width, height/2, [width - 10]);
@@ -316,40 +308,3 @@ function colorChange() {
   }
 }
 
-function wpmAccuracyText() {
-
-    if (state === "15") {
-      text("WPM", width/2 - 80, height/2);
-      text(charCounter, width/2 + 200, height/2);
-
-    }
-  
-    if (state === "30") {
-      text("WPM", width/2 - 80, height/2);
-      text (charCounter/2, width/2 + 200, height/2);
-     
-    }
-  
-    if (state === "45") {
-      text("WPM", width/2 - 80, height/2);
-      text (charCounter * (1/4) * 1.25, width/2 + 200, height/2);
-    } 
-  }
-
-      
-
-
-
-    
-
-
-
-
-
-
-
-
-
-    
-    
-    
