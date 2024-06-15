@@ -9,9 +9,12 @@ let state = "start";
 let theWords = ["red", "hello", "jacket", "desk", "orange", "fruit", "car", "somewhere", "rainbow", "school", "sandwhich","interest", "people"];
 let lastTypedChar = [];
 let theParagraph = [];
+let timerArray = [];
+let newTypeArray = [];
 let typingTest = randomText(1, 5);
 let typingCharsArr = typingTest.split("");
 let keyboard; 
+let capsLockTimes = 0; 
 let charCounter = 0;
 let wrongCharCounter = 0;
 let myButton = new Clickable();
@@ -49,12 +52,13 @@ function draw() {
     nextKey();
     gameText();
     myButtonDisplay();
-    
   }   
   colorChange();
 }
     
-  
+    
+    
+    
 function startScreen() {  
   if (state === "start") {
     background(55);
@@ -63,6 +67,9 @@ function startScreen() {
     textAlign(CENTER, TOP);
     textFont ("verdana", 50);
     text("Welcome to MaxyType!", width / 2, 60);
+    text("Press 1 to begin", width/2, 800);
+    textSize(40);
+    text("Once a test length has been selected, the timer starts. Happy typing!", width/2, 200);
     rect(width/4 - 50, 150, 900, 10);
   }
 } 
@@ -73,16 +80,11 @@ function startScreen() {
 function keyPressed() {
 
   if (keyCode === 49) {
-    state = "type";
+      state = "type";
   }
-  if (key === typingCharsArr[0]) {
-    typingCharsArr.splice(0, 1);  
-    charCounter++;
-    console.log(charCounter);
-  }
-  if (!key === typingCharsArr[0]) {
-    typingCharsArr.splice(0, 1);  
-    wrongCharCounter++;
+     
+  if (keyCode === 20) {
+    capsLockTimes++
   }
 }
 
@@ -111,11 +113,14 @@ function randomText(paragraphs, sentencesPerParagraph) {
 
 function lastTyped() {
   if (keyCode === 20) {
-    fill("red");
-    text ("Caps Lock Is On!", width/2 - 30, 10);
-    fill("white");
+    if (capsLockTimes % 2 !== 0) {
+      fill("red");
+      text ("Caps Lock Is On!", width/2 - 30, 10);
+      fill("white");
+    }
     text ("Last key pressed:", 145, 10);
   }
+
   if (keyCode !== 20) {
     fill("white");
     text (key, 310, 10);
@@ -189,7 +194,7 @@ function gameTextRed() {
   fill(255, 124, 128);
 }
 
-  
+
 
 
 function myButtonDisplay() {
@@ -199,6 +204,7 @@ function myButtonDisplay() {
   myButton.onPress = function() {
     startTimer();
   };
+  
     
 
 
@@ -208,6 +214,7 @@ function myButtonDisplay() {
   myButton2.onPress = function() {
     startTimer2();
   };
+ 
 
   myButton3.locate(300, 200);
   myButton3.text = "45 sec";
@@ -215,9 +222,11 @@ function myButtonDisplay() {
   myButton3.onPress = function() {
     startTimer3();
   };
+  
 
   myButtonColour1.locate(width/1.377, 200);
   myButtonColour1.text = "green";
+  
   myButtonColour1.draw();
   myButtonColour1.onPress = function() {
     
@@ -227,6 +236,7 @@ function myButtonDisplay() {
 
   myButtonColour2.locate(width/1.51, 200);
   myButtonColour2.text = "red";
+ 
   myButtonColour2.draw();
   myButtonColour2.onPress = function() {
     
@@ -244,8 +254,7 @@ function startTimer() {
     console.log(state);
     background(0);
     fill("white");
-    text("WPM", width/2, height/2);
-    text (charCounter * 4, width/2 + 200, height/2);
+    wpmAccuracyText()
   }, 15000);
 }
 
@@ -255,10 +264,9 @@ function startTimer2() {
   setTimeout(() => {
     state = "30";
     console.log(state);
-    background(0);
+    background(0);  
     fill("white");
-    text("WPM", width/2, height/2);
-    text (charCounter * 2, width/2 + 200, height/2);
+    wpmAccuracyText();
   }, 30000);
 }
 
@@ -268,8 +276,7 @@ function startTimer3() {
     console.log(state);
     background(0);
     fill("white");
-    text("WPM", width/2, height/2);
-    text (charCounter * (4/3), width/2 + 200, height/2);
+    wpmAccuracyText();
   }, 45000);
 }
 
@@ -308,6 +315,42 @@ function colorChange() {
     myButton3.color = "#FF7276";
   }
 }
+
+function wpmAccuracyText() {
+
+    if (state === "15") {
+      text("WPM", width/2 - 80, height/2);
+      text(charCounter, width/2 + 200, height/2);
+
+    }
+  
+    if (state === "30") {
+      text("WPM", width/2 - 80, height/2);
+      text (charCounter/2, width/2 + 200, height/2);
+     
+    }
+  
+    if (state === "45") {
+      text("WPM", width/2 - 80, height/2);
+      text (charCounter * (1/4) * 1.25, width/2 + 200, height/2);
+    }
+  }
+
+      
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
     
     
 
